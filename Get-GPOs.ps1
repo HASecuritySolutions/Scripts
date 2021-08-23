@@ -1,5 +1,8 @@
+$output_folder = 'C:'
+
 if (Get-Module -ListAvailable -Name ActiveDirectory) {
     Write-Host "AD Module exists"
+    Write-Host "Exporting GPO reports"
 } else {
     Write-Host "ActiveDirectory PowerShell module does not exist"
     Write-Host "This script requires the ActiveDirectory module to function"
@@ -15,7 +18,6 @@ if (Get-Module -ListAvailable -Name ActiveDirectory) {
     }
 }
 
-$output_folder = 'C:'
 $domains = (Get-ADForest).domains
 foreach ($domain in $domains){
     Get-GPOReport -All -Domain $domain -ReportType HTML -Path "$output_folder\$domain.html"
