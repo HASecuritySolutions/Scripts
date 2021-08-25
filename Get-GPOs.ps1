@@ -21,5 +21,5 @@ if (Get-Module -ListAvailable -Name ActiveDirectory) {
 $domains = (Get-ADForest).domains
 foreach ($domain in $domains){
     Get-GPOReport -All -Domain $domain -ReportType HTML -Path "$output_folder\$domain.html"
-    Get-GPOReport -All -Domain $domain -ReportType HTML -Path "$output_folder\$domain.xml"
+    Get-GPOReport -All -Domain $domain -ReportType XML -Path "$output_folder\$domain.xml"
 }
